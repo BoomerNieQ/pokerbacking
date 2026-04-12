@@ -19,13 +19,6 @@ export default function UnderConstructionPage() {
         padding: "2rem",
       }}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/images/logosmall.png"
-        alt="Pokerbacking logo"
-        style={{ width: "120px", height: "auto", marginBottom: "2rem", objectFit: "contain" }}
-      />
-
       <div style={{ width: "100%", maxWidth: "560px", marginBottom: "2.5rem", borderRadius: "12px", overflow: "hidden" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
