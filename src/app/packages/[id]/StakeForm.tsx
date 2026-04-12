@@ -38,7 +38,7 @@ export default function StakeForm({
 
     if (method === "mollie") {
       // Mollie betaling via API route
-      const res = await fetch("/api/mollie/create-payment", {
+      const res = await fetch("/api/paypal/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -187,8 +187,8 @@ export default function StakeForm({
                   ? "border-gold bg-gold/5 text-gold"
                   : "border-border text-muted hover:text-cream-muted hover:border-border-light"
               }`}>
-              <span className="block font-semibold mb-0.5">Bancontact / iDEAL</span>
-              <span className="text-[10px] opacity-70">Via Mollie — direct bevestigd</span>
+              <span className="block font-semibold mb-0.5">PayPal</span>
+              <span className="text-[10px] opacity-70">Veilig via PayPal — direct bevestigd</span>
             </button>
             <button type="button" onClick={() => setMethod("manual")}
               className={`py-3 px-3 rounded-xl border text-xs font-medium transition-colors text-left ${
@@ -216,13 +216,13 @@ export default function StakeForm({
         <button type="submit" disabled={loading}
           className="btn-primary w-full py-3.5 rounded-xl text-sm font-semibold disabled:opacity-60">
           {loading
-            ? (method === "mollie" ? "Doorsturen naar betaalpagina…" : "Aanvragen…")
+            ? (method === "mollie" ? "Doorsturen naar PayPal…" : "Aanvragen…")
             : `${percent}% kopen voor €${cost.toFixed(2)}`}
         </button>
 
         {method === "mollie" && (
           <p className="text-xs text-muted text-center">
-            Je wordt doorgestuurd naar Mollie voor een veilige betaling.
+            Je wordt doorgestuurd naar PayPal voor een veilige betaling.
           </p>
         )}
         {method === "manual" && (

@@ -77,9 +77,9 @@ export default function PrivacybeleidPage() {
                   <span className="text-muted">supabase.com/privacy</span>
                 </li>
                 <li>
-                  <span className="text-cream font-medium">Mollie</span> — betalingsverwerker voor
-                  Bancontact/iDEAL. Privacybeleid:{" "}
-                  <span className="text-muted">mollie.com/nl/privacy</span>
+                  <span className="text-cream font-medium">PayPal</span> — betalingsverwerker.
+                  Privacybeleid:{" "}
+                  <span className="text-muted">paypal.com/nl/webapps/mpp/ua/privacy-full</span>
                 </li>
               </ul>
               <p className="mt-3">

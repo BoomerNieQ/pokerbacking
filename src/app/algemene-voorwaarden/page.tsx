@@ -85,7 +85,7 @@ export default function AlgemeneVoorwaardenPage() {
             <section>
               <h2 className="text-lg font-semibold text-cream mb-3">6. Betalingen</h2>
               <p>
-                Betalingen kunnen verlopen via Mollie (Bancontact, iDEAL) of via manuele overschrijving.
+                Betalingen kunnen verlopen via PayPal of via manuele overschrijving.
                 Bij manuele betaling is de speler verantwoordelijk voor de bevestiging van ontvangst.
               </p>
               <p className="mt-2">
