@@ -197,7 +197,11 @@ export default async function HomePage() {
       <footer className="border-t border-border py-8 px-5 sm:px-8">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
           <p><span className="text-gradient font-bold">Pokerbacking</span> — Poker staking platform</p>
-          <p>© {new Date().getFullYear()} Pokerbacking · België</p>
+          <div className="flex items-center gap-4">
+            <Link href="/algemene-voorwaarden" className="hover:text-cream-muted transition-colors">Algemene voorwaarden</Link>
+            <Link href="/privacybeleid" className="hover:text-cream-muted transition-colors">Privacybeleid</Link>
+            <p>© {new Date().getFullYear()} Pokerbacking · België</p>
+          </div>
         </div>
       </footer>
     </>
