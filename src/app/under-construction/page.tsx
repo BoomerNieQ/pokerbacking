@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export const metadata = {
   title: "Pokerbacking — Binnenkort beschikbaar",
   description: "Pokerbacking is binnenkort live.",
@@ -21,21 +19,19 @@ export default function UnderConstructionPage() {
         padding: "2rem",
       }}
     >
-      <Image
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src="/images/logosmall.png"
         alt="Pokerbacking logo"
-        width={120}
-        height={120}
-        style={{ marginBottom: "2rem", objectFit: "contain" }}
+        style={{ width: "120px", height: "auto", marginBottom: "2rem", objectFit: "contain" }}
       />
 
       <div style={{ width: "100%", maxWidth: "560px", marginBottom: "2.5rem", borderRadius: "12px", overflow: "hidden" }}>
-        <Image
-          src="/images/banner pb.png"
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/banner%20pb.png"
           alt="Pokerbacking banner"
-          width={560}
-          height={200}
-          style={{ width: "100%", height: "auto", objectFit: "cover" }}
+          style={{ width: "100%", height: "auto", display: "block" }}
         />
       </div>
 
