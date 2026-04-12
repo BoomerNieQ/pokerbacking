@@ -1,26 +1,206 @@
 @import "tailwindcss";
 
+/* ── Design tokens ─────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg:           #080d0a;
+  --bg-card:      #152017;
+  --bg-elevated:  #0f1a11;
+  --border:       #1c2e1e;
+  --border-light: #2d4a2f;
+  --gold:         #c9a84c;
+  --gold-light:   #e8c96d;
+  --gold-dim:     #8a6e30;
+  --cream:        #f0ebe0;
+  --cream-muted:  #b8b0a0;
+  --muted:        #6a7a6c;
+  --green:        #22c55e;
+  --red:          #ef4444;
+  --blue:         #3b82f6;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg:           var(--bg);
+  --color-bg-card:      var(--bg-card);
+  --color-bg-elevated:  var(--bg-elevated);
+  --color-border:       var(--border);
+  --color-border-light: var(--border-light);
+  --color-gold:         var(--gold);
+  --color-gold-light:   var(--gold-light);
+  --color-gold-dim:     var(--gold-dim);
+  --color-cream:        var(--cream);
+  --color-cream-muted:  var(--cream-muted);
+  --color-muted:        var(--muted);
+  --color-green:        var(--green);
+  --color-red:          var(--red);
+  --color-blue:         var(--blue);
+  --font-display:       var(--font-playfair), serif;
+  --font-sans:          var(--font-inter), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base ──────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  data-scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--cream);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-playfair), serif;
+  line-height: 1.2;
+}
+
+/* ── Scroll reveal ─────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.75rem);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-d1 { transition-delay: 0.10s; }
+.reveal-d2 { transition-delay: 0.20s; }
+.reveal-d3 { transition-delay: 0.30s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── Floating suit symbols ─────────────────────────────── */
+@keyframes floatSuit {
+  0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); opacity: 0.10; }
+  50%       { transform: translateY(-14px) rotate(var(--rot, 0deg)); opacity: 0.20; }
+}
+.suit-float {
+  animation: floatSuit 6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .suit-float { animation: none; opacity: 0.04; }
+}
+
+/* ── Gold CTA button ───────────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(
+    90deg,
+    var(--gold) 0%,
+    var(--gold-light) 40%,
+    var(--gold) 60%,
+    var(--gold) 100%
+  );
+  background-size: 200% auto;
+  color: #000;
+  font-weight: 600;
+  transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.35);
+}
+.btn-primary:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary { background: var(--gold); transition: none; }
+  .btn-primary:hover { transform: none; }
+}
+
+/* ── Ghost button ──────────────────────────────────────── */
+.btn-ghost {
+  border: 1px solid var(--border-light);
+  color: var(--cream-muted);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.btn-ghost:hover { border-color: var(--cream-muted); color: var(--cream); }
+
+/* ── Card ──────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  transition: border-color 0.2s ease;
+}
+.card:hover { border-color: var(--border-light); }
+
+/* ── Card hover lift ───────────────────────────────────── */
+.card-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-lift:hover { transform: none; }
+}
+
+/* ── Status badges ─────────────────────────────────────── */
+.badge-open      { color: var(--green); border-color: color-mix(in srgb, var(--green) 30%, transparent); background: color-mix(in srgb, var(--green) 8%, transparent); }
+.badge-closed    { color: var(--cream-muted); border-color: var(--border); }
+.badge-active    { color: var(--blue); border-color: color-mix(in srgb, var(--blue) 30%, transparent); background: color-mix(in srgb, var(--blue) 8%, transparent); }
+.badge-completed { color: var(--gold); border-color: color-mix(in srgb, var(--gold) 30%, transparent); background: color-mix(in srgb, var(--gold) 8%, transparent); }
+.badge-cancelled { color: var(--red); border-color: color-mix(in srgb, var(--red) 30%, transparent); background: color-mix(in srgb, var(--red) 8%, transparent); }
+
+/* ── Input ─────────────────────────────────────────────── */
+.input {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  color: var(--cream);
+  transition: border-color 0.15s ease;
+}
+.input::placeholder { color: var(--muted); }
+.input:focus { outline: none; border-color: var(--gold); }
+
+/* ── Progress bar ──────────────────────────────────────── */
+.progress-track {
+  height: 4px;
+  background: var(--bg-elevated);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+}
+
+/* ── Gradient text ─────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Eyebrow decoration ────────────────────────────────── */
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  display: inline-block;
+  width: 1.75rem;
+  height: 1px;
+  background-color: var(--gold);
+  vertical-align: middle;
+  margin: 0 0.65rem;
+}
+
+/* ── Gold divider ──────────────────────────────────────── */
+.gold-divider {
+  width: 3rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto;
 }
