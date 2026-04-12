@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const metadata = {
   title: "Pokerbacking — Binnenkort beschikbaar",
   description: "Pokerbacking is binnenkort live.",
@@ -19,10 +21,24 @@ export default function UnderConstructionPage() {
         padding: "2rem",
       }}
     >
-      <div style={{ fontSize: "3rem", marginBottom: "1.5rem", opacity: 0.6 }}>♠</div>
-      <h1 style={{ fontSize: "2rem", fontWeight: 700, marginBottom: "0.75rem" }}>
-        Pokerbacking
-      </h1>
+      <Image
+        src="/images/logosmall.png"
+        alt="Pokerbacking logo"
+        width={120}
+        height={120}
+        style={{ marginBottom: "2rem", objectFit: "contain" }}
+      />
+
+      <div style={{ width: "100%", maxWidth: "560px", marginBottom: "2.5rem", borderRadius: "12px", overflow: "hidden" }}>
+        <Image
+          src="/images/banner pb.png"
+          alt="Pokerbacking banner"
+          width={560}
+          height={200}
+          style={{ width: "100%", height: "auto", objectFit: "cover" }}
+        />
+      </div>
+
       <p style={{ color: "#a09070", fontSize: "1rem", maxWidth: "360px", lineHeight: 1.6 }}>
         We zijn nog bezig met de laatste afwerkingen.
         <br />
