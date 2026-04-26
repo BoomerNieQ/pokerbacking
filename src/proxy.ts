@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const UNDER_CONSTRUCTION = true; // Zet op false om de site te openen
+const UNDER_CONSTRUCTION = false; // Zet op false om de site te openen
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
